@@ -6,15 +6,14 @@ import requests
 from pymongo import MongoClient
 import pymongo
 import os
-CONNECTION_STRING = "mongodb+srv://lasya:1996@cluster0.ectp0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority/lasya_twitter.TwitterData"
 
 def get_database():
     # connection string to mongo db
-    CONNECTION_STRING = "mongodb+srv://lasya:1996@cluster0.ectp0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+    CONNECTION_STRING = "mongodb+srv://username:password@clustername.ectp0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
     # create connection
     client = MongoClient(CONNECTION_STRING)
 
-    return client['lasya_twitter']
+    return client["database"]
 
 
 import findspark
@@ -60,7 +59,7 @@ def sendPartition(iter):
     for record in iter:
         collection_name.insert_many([record])
 
-# processed_stream.foreachRDD(lambda rdd: rdd.foreachPartition(sendPartition))
+processed_stream.foreachRDD(lambda rdd: rdd.foreachPartition(sendPartition))
 ssc.start()
 # wait for the streaming to finish
 ssc.awaitTermination()
