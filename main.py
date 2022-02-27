@@ -3,10 +3,10 @@ import sys
 import requests
 import requests_oauthlib
 import json
-ACCESS_TOKEN = '1497421764455981056-DNdnWkHbZchW501RN4Nt3EKkLXo5mn'
-ACCESS_SECRET = 'g9GUluSYhG653ttMTXozU4dOaNtM9AMycArowywZansmP'
-CONSUMER_KEY = 'hRMelGaDb4ffeCEP8LkBxIZIj'
-CONSUMER_SECRET = 'MVjWNn3sz51Jny9CNskO0u1zbV6rcJgY1IwYgD98WpussQdEad'
+ACCESS_TOKEN = ''
+ACCESS_SECRET = ''
+CONSUMER_KEY = ''
+CONSUMER_SECRET = ''
 my_auth = requests_oauthlib.OAuth1(CONSUMER_KEY, CONSUMER_SECRET,ACCESS_TOKEN, ACCESS_SECRET)
 
 def get_tweets():
@@ -30,10 +30,6 @@ def send_tweets_to_spark(http_resp, tcp_connection):
                 e = sys.exc_info()[0]
                 print("Error: %s" % e)
 
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
 
 
 
