@@ -50,7 +50,9 @@ countdf.pprint()
 distinct_count = tags_totals.count()
 distinct_count.pprint()
 # process the stream data
-processed_stream = dataStream.filter(lambda a: a != '')
+#drops duplicate tweets. If using structured streaming one can use drop duplicates with our with out watermark
+twitterdf = tags_totals.map(lambda a:a[0])
+processed_stream = twitterdf.filter(lambda a: a != '')
 processed_stream.pprint()
 # Write the processed stream to a database
 def sendPartition(iter):
