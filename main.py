@@ -24,7 +24,6 @@ def send_tweets_to_spark(http_resp, tcp_connection):
             try:
                 tweet_text = line['text']
                 print("Tweet Text: " + tweet_text)
-                print ("------------------------------------------")
                 tcp_connection.send((tweet_text + '\n').encode('utf-8'))
             except:
                 e = sys.exc_info()[0]
